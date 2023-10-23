@@ -1,0 +1,60 @@
+﻿@model SGPI.Models.Usuario
+
+
+
+@{
+    ViewData["Tittle"] = "CrearUsuario";
+    Layout = "_Layout";
+}
+
+<h1>CrearUsuario</h1>
+
+<form method="post"/>
+
+    <label asp-for="Nombre"></label>
+    <input asp-for="Nombre" class="form-control" />
+
+    <label asp-for="PrimerApellido"></label>
+    <input asp-for="PrimerApellido" class="form-control" />
+
+    <label asp-for="SegundoApellido"></label>
+    <input asp-for="SegundoApellido" class="form-control" />
+
+    <label asp-for="NumDoc"></label>
+    <input asp-for="NumDoc" class="form-control" />
+
+    <label asp-for="Email"></label>
+    <input asp-for="Email" class="form-control" />
+
+    <label asp-for="Password"></label>
+    <input asp-for="Password" class="form-control" />
+
+    <label asp-for="IdGenero"></label>
+    <input asp-for="IdGenero" class="form-control" />
+
+    <label asp-for="Activo"></label>
+    <input asp-for="Activo" class="form-control" />
+
+
+    <div class="form-group">
+        <span asp-validation-for="Nombre"></span>
+        <label asp-for="Nombre" class="control-label"></label>
+
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div class="form-control">
+        <label asp-for="IdGenero">Genero</label>
+
+         <!--Html.DropDownList("IdGenero", new SelectList(ViewBag.genero, "IdGenero", "Genero1"))-->
+       
+         <!--Se agrega-->
+        @if (ViewBag.genero != null)
+        {
+            @Html.DropDownList("IdGenero", (SelectList)ViewBag.genero)
+        }
+        else
+        {
+            <p>No hay datos de género disponibles.</p>
+        }
+    </div>
