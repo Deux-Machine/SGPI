@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace SGPI.Models;
 
+
 public partial class TipoDocumento
 {
-    public int IdDoc { get; set; }
+    [Key] // Esto indica que Id_Doc es la clave primaria
+    [Column("Id_Doc")]
+    public int Id_Doc { get; set; }
 
     public string Descripcion { get; set; } = null!;
 

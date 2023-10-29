@@ -5,7 +5,7 @@ namespace SGPI.Models;
 
 public partial class Programa
 {
-    public int IdPrograma { get; set; }
+    public int Id_Programa { get; set; }
 
     public string Descripcion { get; set; } = null!;
 }

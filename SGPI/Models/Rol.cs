@@ -5,7 +5,7 @@ namespace SGPI.Models;
 
 public partial class Rol
 {
-    public int IdRol { get; set; }
+    public int Id_Rol { get; set; }
 
     public string Descripcion { get; set; } = null!;
 

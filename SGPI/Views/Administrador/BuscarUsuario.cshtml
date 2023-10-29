@@ -1,0 +1,129 @@
+﻿@model SGPI.Models.Usuario
+@{
+    ViewData["Title"] = "BuscarUsuario";
+    Layout = "_Layout";
+}
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    h1 {
+        font-family: cursive;
+        font-size: medium;
+    }
+
+    body {
+        background-image: url('https://www.freepik.es/foto-gratis/bokeh-luz-urbana-abstracta-noche-fondo-defocused_1235553.htm#query=fondo%20ciudad%20noche&position=0&from_view=keyword&track=ais')
+    }
+
+    form {
+        width: 1000px;
+        background-color: #0e2433;
+        padding: 30px;
+        margin: auto;
+        margin-top: 50px;
+        border-radius: 4px;
+        font-family: Calibri;
+        color: white;
+        box-shadow: 20px 25px 43px #000;
+    }
+
+    .form-control {
+        background: #1c4966;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        border: 1px solid #07687b;
+    }
+
+    .form-btn {
+        width: 35%;
+        padding: 8px;
+        background: #1f53c5;
+        border: 1px solid #07687b;
+    }
+
+</style>
+
+<div class="container">
+    <nav class="topnavA">
+        <a  href="~/Administrador/MenuRegistro">Crear Usuario</a>
+        <a class="active" href="~/Administrador/MenuAdmBuscar">Buscar Usuario</a>
+        <a href="~/Administrador/Reportes">Reportes</a>
+    </nav>
+
+    <div class="cuacenterTb">
+        <div class="busT">
+            <form method="post">
+            <div class="row">
+                <div class="col-md-4">  
+                    <label for="identificacion">Tipo Identificación</label>
+
+                        @Html.DropDownList("Id_Doc", new SelectList(ViewBag.documento , "Id_Doc", "Descripcion"));
+                </div>
+                <div class="col-md-4">
+                    <label for="doc">Número de Documento</label>
+                    <input asp-for="NumDoc" type="text"/>
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" name="buscar" value="Buscar" class="buscar-submit" />
+                </div>
+            </div>
+            <div class="cont2">
+
+                @if (Model != null)
+                {
+                    
+                
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model=>model.Nombre) </th>
+                            <th>@Html.DisplayNameFor(model=>model.PrimerApellido) </th>
+                            <th>@Html.DisplayNameFor(model=>model.SegundoApellido) </th>
+                            <th>Tipo Ident.</th>
+                            <th>Num. Documento</th>
+                            <th>Genero</th>
+                            <th>E-mail</th>
+                            <th>Programa</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.Nombre)</td>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.PrimerApellido)</td>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.SegundoApellido)</td>
+                           
+
+
+                            <td>@Html.DisplayFor(modelItem=>modelItem.NumDoc)</td>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.Id_Genero)</td>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.Email)</td>
+                          
+                           
+
+                            <td>@Html.ActionLink("MenuAdmModificar", "MenuAdmModificar", new{Id_Usuario=Model.Id_Usuario})</td>
+                            <td>@Html.ActionLink("Delete","Delete",new{Id_Usuario=Model.Id_Usuario},new{onclick="retur confirm('Esta seguro de eliminar');"})</td>
+                        </tr>
+                    </tbody>
+                </table>
+                }
+            </div>
+            
+
+            <div class="btns">
+                <button href="~/Administrador/MenuAdmModificar" class="btnCS">Modificar Usuario</button>
+                <button class="btnCS">Eliminar Usuario</button>
+            </div>
+            </form>
+        </div> 
+       
+    </div>
+</div>

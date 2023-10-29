@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QUDW64cu40BE0sIkaIPIYWKHMVEVZZRD3FfHOXv5Olg=",
+  "Hash": "FEUsnBPcKO00DWdmxogbPQ8v4vXM6wo3k9ZIoqJMVvI=",
   "Source": "SGPI",
   "BasePath": "_content/SGPI",
   "Mode": "Default",
@@ -66,23 +66,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
-    },
-    {
-      "Identity": "C:\\Users\\USER\\source\\repos\\SGPI\\SGPI\\wwwroot\\css\\StyleHome.css",
-      "SourceId": "SGPI",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\USER\\source\\repos\\SGPI\\SGPI\\wwwroot\\",
-      "BasePath": "_content/SGPI",
-      "RelativePath": "css/StyleHome.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\StyleHome.css"
     },
     {
       "Identity": "C:\\Users\\USER\\source\\repos\\SGPI\\SGPI\\wwwroot\\favicon.ico",

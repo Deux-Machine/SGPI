@@ -4,7 +4,7 @@ html {
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 12px;
   }
 }
 
@@ -19,4 +19,9 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+/* Estilo para el pie de página */
+.footer {
+    margin-top: 1px; /* Ajusta el valor según sea necesario para reducir la altura del pie de página */
 }

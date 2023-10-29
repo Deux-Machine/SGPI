@@ -1,56 +1,148 @@
 ﻿@model SGPI.Models.Usuario
 
+@{
+    ViewData["Tittle"] = "CrearUsuario";
+    Layout = "_Layout";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
 
+    h1 {
+        font-family: cursive;
+        font-size: medium;
+    }
 
-<h1>CrearUsuario</h1>
+    body {
+        background-image: url('https://www.freepik.es/foto-gratis/bokeh-luz-urbana-abstracta-noche-fondo-defocused_1235553.htm#query=fondo%20ciudad%20noche&position=0&from_view=keyword&track=ais')
+    }
 
-<form method="post"/>
+    form {
+        width: 1000px;
+        background-color: #0e2433;
+        padding: 30px;
+        margin: auto;
+        margin-top: 50px;
+        border-radius: 4px;
+        font-family: Calibri;
+        color: white;
+        box-shadow: 20px 25px 43px #000;
+    }
 
-    <label asp-for="Nombre"></label>
-    <input asp-for="Nombre" class="form-control" />
+    .form-control {
+        background: #1c4966;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        border: 1px solid #07687b;
+    }
 
-    <label asp-for="PrimerApellido"></label>
-    <input asp-for="PrimerApellido" class="form-control" />
+    .form-btn {
+        width: 35%;
+        padding: 8px;
+        background: #1f53c5;
+        border: 1px solid #07687b;
+    }
 
-    <label asp-for="SegundoApellido"></label>
-    <input asp-for="SegundoApellido" class="form-control" />
-
-    <label asp-for="NumDoc"></label>
-    <input asp-for="NumDoc" class="form-control" />
-
-    <label asp-for="Email"></label>
-    <input asp-for="Email" class="form-control" />
-
-    <label asp-for="Password"></label>
-    <input asp-for="Password" class="form-control" />
-
-    <label asp-for="IdGenero"></label>
-    <input asp-for="IdGenero" class="form-control" />
-
-    <label asp-for="Activo"></label>
-    <input asp-for="Activo" class="form-control" />
+</style>
 
 
-    <div class="form-group">
-        <span asp-validation-for="Nombre"></span>
-        <label asp-for="Nombre" class="control-label"></label>
+<form method="post" class="container">
+    <div class="row">
+        <div class="col-md-4 inputGroupContainer">
+            <div class="form-group">
+                <label asp-for="Nombre">NOMBRES</label>
+                <input asp-for="Nombre" class="form-control" />
+            </div>
+        </div>
 
-        <input asp-for="Nombre" class="form-control" />
+        <div class="col-md-4 inputGroupContainer">
+            <div class="form-group">
+                <label asp-for="PrimerApellido">PRIMER APELLIDO</label>
+                <input asp-for="PrimerApellido" class="form-control" />
+            </div>
+        </div>
     </div>
 
-    <div class="form-control">
-        <label asp-for="IdGenero">Genero</label>
+    <div class="row">
+        <div class="col-md-4 inputGroupContainer">
+            <div class="form-group">
+                <label asp-for="Id_Genero">Genero</label>
+                @Html.DropDownList("Id_Genero", new SelectList(ViewBag.genero, "Id_Genero", "Descripcion"), new {@class = "form-control dropdown"})
+            </div>
+        </div>
+        @*@Html.DropDownList("Id_Genero", (SelectList)ViewBag.genero)
+        @Html.DropDownList("Id_Doc", (SelectList)ViewBag.TipoDocumento)*@
 
-         <!--Html.DropDownList("IdGenero", new SelectList(ViewBag.genero, "IdGenero", "Genero1"))-->
-       
-         <!--Se agrega-->
-        @if (ViewBag.genero != null)
-        {
-            @Html.DropDownList("IdGenero", (SelectList)ViewBag.genero)
-        }
-        else
-        {
-            <p>No hay datos de género disponibles.</p>
-        }
+        <div class="col-md-4 inputGroupContainer">
+            <div class="form-group">
+                <label asp-for="SegundoApellido">SEGUNDO APELLIDO</label>
+                <input asp-for="SegundoApellido" class="form-control" />
+
+            </div>
+        </div>
     </div>
+    
+    <div class="row">
+        <div class="col-md-4 inputGroupContainer">
+            <div class="form-group">
+                <label for="">TipoDocumento</label>
+                @Html.DropDownList("Id_Doc", new SelectList(ViewBag.Documento, "Id_Doc", "Descripcion"), new {@class = "form-control dropdown"})
+            </div>
+        </div>
+
+        <div class="col-md-4 inputGroupContainer">
+            <label asp-for="NumDoc">NUMERO DE DOCUMENTO</label>
+            <input asp-for="NumDoc" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 inputGroupContainer">
+            <label asp-for="Email">E-MAIL</label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+
+        <div class="col-md-4 inputGroupContainer">
+            <label asp-for="Password">CONTRASEÑA</label>
+            <input asp-for="Password" type="password" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 inputGroupContainer">
+            <div class="form-group">
+                <label for="">Rol</label>
+                @Html.DropDownList("Id_Rol", new SelectList(ViewBag.rol, "Id_Rol", "Descripcion"), new {@class = "form-control dropdown"})
+            </div>
+        </div>
+
+        <div class="col-md-4 inputGroupContainer">
+            <div class="form-group">
+                <label for="">Programa</label>
+            @Html.DropDownList("Id_Programa", new SelectList(ViewBag.programa, "Id_Programa", "Descripcion"), new {@class = "form-control dropdown"})
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 inputGroupContainer">
+        <div class="form-group">
+            <label asp-for="Activo">Activo</label>
+            <input asp-for="Activo" class="form-control" placeholder="1">
+        </div>
+    </div>
+
+    <div class="col-md-4 inputGroupContainer">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="form-btn">GUARDAR</button>
+            </div>
+        </div>
+    </div>
+
+</form>

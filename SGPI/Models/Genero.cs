@@ -9,7 +9,7 @@ public partial class Genero
 {
     [Key] // Esto indica que IdGenero es la clave primaria
     [Column("Id_Genero")]
-    public int IdGenero { get; set; }
+    public int Id_Genero { get; set; }
 
     public string Descripcion { get; set; } = null!;
 

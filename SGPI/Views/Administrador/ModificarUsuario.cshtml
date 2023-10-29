@@ -1,0 +1,160 @@
+﻿@model SGPI.Models.Usuario
+
+@{
+    // eL arroba es para realizar codigo de c# en html
+
+    ViewData["Title"] = "ModificarUsuario";
+    Layout = "_layout";
+
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    h1 {
+        font-family: cursive;
+        font-size: medium;
+    }
+
+    body {
+        background-image: url('https://www.freepik.es/foto-gratis/bokeh-luz-urbana-abstracta-noche-fondo-defocused_1235553.htm#query=fondo%20ciudad%20noche&position=0&from_view=keyword&track=ais')
+    }
+
+    form {
+        width: 1000px;
+        background-color: #0e2433;
+        padding: 30px;
+        margin: auto;
+        margin-top: 50px;
+        border-radius: 4px;
+        font-family: Calibri;
+        color: white;
+        box-shadow: 20px 25px 43px #000;
+    }
+
+    .form-control {
+        background: #1c4966;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        border: 1px solid #07687b;
+    }
+
+    .form-btn {
+        width: 35%;
+        padding: 8px;
+        background: #1f53c5;
+        border: 1px solid #07687b;
+    }
+
+</style>
+
+<header>
+    <h1>Modificar Usuario</h1>
+</header>
+
+
+
+<form method="post" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Id_Doc">Tipo de Documento</label>
+                @Html.DropDownList("Id_Doc", new SelectList(ViewBag.tipoDocumento, "Id_Doc", "Descripcion"), new { @class = "form-control" }))
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="NumDoc">Número de Documento</label>
+                <input asp-for="NumDoc" class="form-control" placeholder="Ejemplo: 123456789">
+            </div>
+        </div>
+
+    </div>
+
+    <selection class="form-sgpi">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Nombre">Nombre</label>
+                    <input asp-for="Nombre" class="form-control" placeholder="Ejemplo: Estiven">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PrimerApellido">Primer Apellido</label>
+                    <input asp-for="PrimerApellido" class="form-control" placeholder="Ejemplo: Jaramillo">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="SegundoApellido">Segundo Apellido</label>
+                    <input asp-for="SegundoApellido" class="form-control" placeholder="Ejemplo: Gómez">
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Id_Genero">Género</label>
+                    @Html.DropDownList("Id_Genero", new SelectList(ViewBag.genero, "Id_Genero", "Descripcion"), new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Id_Rol">Rol</label>
+                    @Html.DropDownList("Id_Rol", new SelectList(ViewBag.rol, "Id_Rol", "Descripcion"), new { @class = "form-control" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Email">Correo Electrónico</label>
+                    <input asp-for="Email" class="form-control" placeholder="Ejemplo: usuario@dominio.com">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Password">Contraseña</label>
+                    <input asp-for="Password" class="form-control" placeholder="Ejemplo: ********">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Id_Programa">IdPrograma</label>
+                    <input asp-for="Id_Programa" class="form-control" placeholder="1">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Activo">Activo</label>
+                    <input asp-for="Activo" class="form-control" placeholder="1">
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="form-btn">Actualizar</button>
+            </div>
+        </div>
+</form>
