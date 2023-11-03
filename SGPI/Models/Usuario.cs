@@ -32,9 +32,9 @@ public partial class Usuario
     public int Id_Rol { get; set; }
 
     //Quitar si no funciona el programa
-    //public virtual Programa IdProgramaNavigation { get; set; } = null!;
     public virtual TipoDocumento IdDocNavigation { get; set; } = null!;
     public virtual Genero IdGeneroNavigation { get; set; } = null!;
     public virtual Rol IdRolNavigation { get; set; } = null!;
+    //public virtual Programa IdProgramaNavigation { get; set; } = null!;
 
 }

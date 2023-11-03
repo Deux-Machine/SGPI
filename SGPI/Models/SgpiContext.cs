@@ -194,6 +194,7 @@ public partial class SgpiContext : DbContext
                 .HasForeignKey(d => d.Id_Rol)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FKUsuarioRol");
+
         });
 
         OnModelCreatingPartial(modelBuilder);

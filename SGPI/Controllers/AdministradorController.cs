@@ -92,12 +92,13 @@ namespace SGPI.Controllers
         {
             ViewBag.documento = contexto.TipoDocumentos.ToList();// buscar usuario
 
+
+
             return View();
 
         }
 
         [HttpPost]
-
         public IActionResult BuscarUsuario(Usuario usuario)
         {
             var us = contexto.Usuarios
@@ -118,106 +119,13 @@ namespace SGPI.Controllers
             }
         }
 
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-
-        [HttpPost]
-        public IActionResult Login(Usuario user)
-        {
-
-            var usuario = contexto.Usuarios//Login si el usuario es correcto entra
-                .Where(consulta => consulta.NumDoc == user.NumDoc
-                && consulta.Password == user.Password).FirstOrDefault();
-
-            if (usuario != null)
-            {
-                if (usuario.IdRol == 1)
-                {
-                    return Redirect("Administrador/AdminBuscar");//redirije a menu administrador
-                }
-                else if (usuario.IdRol == 2)
-                {
-                    return Redirect("Coordinador/MenuCoordinadorBuscar");//redirije a menu coordinador
-                }
-                else if (usuario.IdRol == 3)
-                {
-                    return Redirect("Estudiante/ActualizarEstudiante");//redirijhe a estudiante
-                }
-                else
-                {
-
-                }
-            }
-            else { }
-            return View();
-        }
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        public IActionResult OlvidarContrasena()
-        {
-            return View();
-        }
-
-        public IActionResult MenuRegistro() //registro de usuarios
-        {
-            ViewBag.genero = contexto.Generos.ToList();
-            ViewBag.rol = contexto.Rols.ToList();
-            ViewBag.documento = contexto.TipoDocumentos.ToList(); //validar el Documentos
-            ViewBag.programa = contexto.Programas.ToList();
-
-            return View();
-        }
-        [HttpPost]
-        public IActionResult MenuRegistro(Usuario usuario)
-        {
-            contexto.Usuarios.Add(usuario);
-            contexto.SaveChanges();
-            ViewBag.genero = contexto.Generos.ToList();
-            ViewBag.rol = contexto.Rols.ToList();
-            ViewBag.documento = contexto.TipoDocumentos.ToList();
-            ViewBag.programa = contexto.Programas.ToList();
-
-            return View();
-        }
-
- 
-
-        public IActionResult MenuAdmModificar(int? IdUsuario)//modificar usuario
+        public IActionResult ModificarUsuario(int? Id_Usuario)//modificar usuario
 
         {
-            Usuario usuario = contexto.Usuarios.Find(IdUsuario);
+
+
+            Usuario usuario = contexto.Usuarios.Find(Id_Usuario);
+
             if (usuario != null)
             {
                 ViewBag.genero = contexto.Generos.ToList();
@@ -227,11 +135,11 @@ namespace SGPI.Controllers
                 return View(usuario);
             }
             else
-                return Redirect("Administrador/AdminBuscar");
+                return Redirect("Administrador/BuscarUsuario");
         }
-        [HttpPost]
 
-        public IActionResult MenuAdmModificar(Usuario user)
+        [HttpPost]
+        public IActionResult ModificarUsuario(Usuario user)
         {
             contexto.Update(user);
             contexto.SaveChanges();
@@ -239,32 +147,23 @@ namespace SGPI.Controllers
             ViewBag.documento = contexto.TipoDocumentos.ToList();
             ViewBag.rol = contexto.Rols.ToList();
             ViewBag.programa = contexto.Programas.ToList();
-            return Redirect("Administrador/AdminBuscar");
-
-
-
+            return Redirect("Administrador/BuscarUsuario");
 
         }
-        public ActionResult Delete(int? IdUsuario)
+
+        public ActionResult Delete(int? Id_Usuario)
         {
 
-            Usuario usuario = contexto.Usuarios.Find(IdUsuario);
+            Usuario usuario = contexto.Usuarios.Find(Id_Usuario);
 
             if (usuario != null)
             {
                 contexto.Remove(usuario);
                 contexto.SaveChanges();
-                return Redirect("/Administrador/AdminBuscar");
+                return Redirect("/Administrador/BuscarUsuario");
             }
             else
-
                 return View();
-
         }
-
-        public IActionResult Reportes()
-
-
-        {
-            return View();
-        }*/
+    }
+}

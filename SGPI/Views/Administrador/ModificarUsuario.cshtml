@@ -22,7 +22,10 @@
     }
 
     body {
-        background-image: url('https://www.freepik.es/foto-gratis/bokeh-luz-urbana-abstracta-noche-fondo-defocused_1235553.htm#query=fondo%20ciudad%20noche&position=0&from_view=keyword&track=ais')
+        background-image: url('https://img.freepik.com/fotos-premium/fondo-borroso-bokeh-luces-ciudad_63313-398.jpg?w=900');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
 
     form {
@@ -34,7 +37,7 @@
         border-radius: 4px;
         font-family: Calibri;
         color: white;
-        box-shadow: 20px 25px 43px #000;
+        box-shadow: 20px 25px 43px #333;
     }
 
     .form-control {
@@ -59,102 +62,86 @@
 </header>
 
 
+<div class="container">
+    <nav class="topnavA">
+        <a class="active" href="~/Administrador/CrearUsuario">Crear Usuario</a>
+        <a href="~/Administrador/BuscarUsuario>Buscar Usuario</a>
+        <a href="~/Administrador/Reportes">Reportes</a>
+        <button class="btnLogUpA">Cerrar Sesión</button>
+    </nav>
 
-<form method="post" class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="Id_Doc">Tipo de Documento</label>
-                @Html.DropDownList("Id_Doc", new SelectList(ViewBag.tipoDocumento, "Id_Doc", "Descripcion"), new { @class = "form-control" }))
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label asp-for="NumDoc">Número de Documento</label>
-                <input asp-for="NumDoc" class="form-control" placeholder="Ejemplo: 123456789">
-            </div>
-        </div>
+    <form method="post">
+        <div class="cuacenter">
+            <div class="bus">
+                @Html.HiddenFor(model => model.Id_Usuario)
+                <div class="cont1">
+                    <div class="row">
+                        <div class="col-md-3">
 
-    </div>
-
-    <selection class="form-sgpi">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="Nombre">Nombre</label>
-                    <input asp-for="Nombre" class="form-control" placeholder="Ejemplo: Estiven">
+                            @Html.DropDownList("Id_Doc", new SelectList(ViewBag.Documento, "Id_Doc", "Descripcion"), new {@class = "form-control dropdown"})
+                        </div>
+                        <div class="col-md-3">
+                            <label for="name">Primer Nombre</label>
+                            <input asp-for="Nombre" type="text" />
+                           
+                        <div class="col-md-3">
+                            <label for="priApel">Primer Apellido</label>
+                            <input asp-for="PrimerApellido" type="text" />
+                           
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="PrimerApellido">Primer Apellido</label>
-                    <input asp-for="PrimerApellido" class="form-control" placeholder="Ejemplo: Jaramillo">
+                <div class="cont1">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="segApel">Segundo Apellido</label>
+                            <input asp-for="SegundoApellido" type="text" />
+                           
+                        </div>
+                        <div class="col-md-4">
+                            <label for="doc">Número de Documento</label>
+                            <input asp-for="NumDoc" type="text" />
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <label for="email">Correo</label>
+                            <input asp-for="Email" type="email" />
+                           
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp-for="SegundoApellido">Segundo Apellido</label>
-                    <input asp-for="SegundoApellido" class="form-control" placeholder="Ejemplo: Gómez">
+                <div class="cont1">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="roll">Roll Usuario</label>
+                         
+                           @Html.DropDownList("Id_Rol", new SelectList(ViewBag.rol, "Id_Rol", "Descripcion"))
+                        </div>
+                        <div class="col-md-4">
+                            <label for="genero">Genero</label>
+                         
+                             @Html.DropDownList("Id_Genero", new SelectList(ViewBag.genero, "Id_Genero", "Descripcion"))
+                        </div>
+                        <div class="col-md-4">
+                            <label for="pass">Contraseña</label>
+                            <input asp-for="Password" type="text" />
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+                <div class="cont1">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="programa">Programa</label>
 
-        
-
-        <div class="row">
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Id_Genero">Género</label>
-                    @Html.DropDownList("Id_Genero", new SelectList(ViewBag.genero, "Id_Genero", "Descripcion"), new { @class = "form-control" })
+                              @Html.DropDownList("Id_Programa", new SelectList(ViewBag.programa, "Id_Programa", "Descripcion"))
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Id_Rol">Rol</label>
-                    @Html.DropDownList("Id_Rol", new SelectList(ViewBag.rol, "Id_Rol", "Descripcion"), new { @class = "form-control" })
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Email">Correo Electrónico</label>
-                    <input asp-for="Email" class="form-control" placeholder="Ejemplo: usuario@dominio.com">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Password">Contraseña</label>
-                    <input asp-for="Password" class="form-control" placeholder="Ejemplo: ********">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Id_Programa">IdPrograma</label>
-                    <input asp-for="Id_Programa" class="form-control" placeholder="1">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Activo">Activo</label>
-                    <input asp-for="Activo" class="form-control" placeholder="1">
+                <div class="btnsC">
+                    <button class="btnCS">Modificar</button>
                 </div>
             </div>
         </div>
-
-        <br>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <button type="submit" class="form-btn">Actualizar</button>
-            </div>
-        </div>
-</form>
+    </form>
+</div>
