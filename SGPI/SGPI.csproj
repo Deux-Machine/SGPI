@@ -16,9 +16,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Coordinador\" />
-    <Folder Include="Views\Estudiante\" />
-  </ItemGroup>
-
 </Project>

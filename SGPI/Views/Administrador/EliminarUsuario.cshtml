@@ -1,0 +1,78 @@
+﻿@model SGPI.Models.Usuario
+@{
+    ViewData["Title"] = "EliminarUsuario";
+    Layout = "_Layout";
+}
+
+<h1>Eliminar Usuario</h1>
+<br />
+
+<form action="" class="form-inline justify-content-center">
+    <center>
+        <ul class="nav nav-pills" class="form">
+            <li class="nav-item">
+                <a class="nav-link  " href="#">Crear Usuario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Administrador/BuscarUsuario">Buscar Usuario </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Administrador/EliminarUsuario">Eliminar Usuario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Administrador/EditarUsuario">Editar Usuario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Administrador/Reportes">Reportes</a>
+            </li>
+        </ul>
+    </center>
+</form>
+<form method="post"> 
+
+<br/>
+<label>Buscar Usuario</label>
+
+    <center>
+        <div class="input-group">
+            <br />
+            <label for="identificacion">Tipo Identificación</label>
+            <button type="submit" class="btn btn-primary mb-3">buscar</button>
+        </div>
+        <br />
+    </center>
+    <table class="table" border="1">
+
+    <thead>
+        <th>@Html.DisplayNameFor(model=>model.Nombre) </th>
+        <th>@Html.DisplayNameFor(model=>model.SegundoApellido) </th>
+        <th>@Html.DisplayNameFor(model=>model.SegundoApellido) </th>
+        <th>Tipo Ident</th>
+        <th>N° Documento</th>
+        <th>Genero</th>
+        <th>E-mail</th>
+        <th>Programa</th>
+        <th>Rol</th>
+    </thead>
+    <tr>
+            <td>@Html.DisplayFor(modelItem=>modelItem.Nombre)</td>
+            <td>@Html.DisplayFor(modelItem=>modelItem.PrimerApellido)</td>
+            <td>@Html.DisplayFor(modelItem=>modelItem.SegundoApellido)</td>
+            <td>@Html.DisplayFor(modelItem => modelItem.IdDocNavigation.Descripcion)</td>
+            <td>@Html.DisplayFor(modelItem=>modelItem.NumDoc)</td>
+            <td>@Html.DisplayFor(modelItem => modelItem.IdGeneroNavigation.Descripcion)</td>
+            <td>@Html.DisplayFor(modelItem=>modelItem.Email)</td>
+            <td>@Html.DisplayFor(modelItem => modelItem.IdProgramaNavigation.Descripcion)</td>
+            <td>@Html.DisplayFor(modelItem => modelItem.IdRolNavigation.Descripcion)</td>
+    </tr>
+
+
+
+</table>
+
+    <br />
+<center>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
+
+</center>
+</form>

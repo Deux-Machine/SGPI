@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SGPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02159b9400000666d97505337880321948959221")]
 [assembly: System.Reflection.AssemblyProductAttribute("SGPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SGPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -9,6 +9,6 @@ public partial class Programa
 
     public string Descripcion { get; set; } = null!;
 
-    //public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+    public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
 
 }

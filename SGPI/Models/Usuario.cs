@@ -6,7 +6,6 @@ namespace SGPI.Models;
 public partial class Usuario
 {
 
-
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id_Usuario { get; set; }
@@ -18,7 +17,9 @@ public partial class Usuario
     public string SegundoApellido { get; set; } = null!;
 
     public string Email { get; set; } = null!;
+
     public string Password { get; set; } = null!;
+
     public int NumDoc { get; set; }
 
     public bool Activo { get; set; }
@@ -31,10 +32,15 @@ public partial class Usuario
 
     public int Id_Rol { get; set; }
 
-    //Quitar si no funciona el programa
+    public int Id_Pagos { get; set; }
+
     public virtual TipoDocumento IdDocNavigation { get; set; } = null!;
     public virtual Genero IdGeneroNavigation { get; set; } = null!;
     public virtual Rol IdRolNavigation { get; set; } = null!;
-    //public virtual Programa IdProgramaNavigation { get; set; } = null!;
+    public virtual Programa IdProgramaNavigation { get; set; } = null!;
+    public virtual Pagos IdPagosNavigation { get; set; } = null!;
+
+    [ForeignKey("Id_Usuario")]
+    public virtual ICollection<Homologacion> Homologacions { get; set; } = new List<Homologacion>();
 
 }

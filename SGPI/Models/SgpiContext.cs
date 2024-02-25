@@ -19,7 +19,7 @@ public partial class SgpiContext : DbContext
 
     public virtual DbSet<Homologacion> Homologacions { get; set; }
 
-    public virtual DbSet<Pago> Pagos { get; set; }
+    public virtual DbSet<Pagos> Pagos { get; set; }
 
     public virtual DbSet<Programa> Programas { get; set; }
 
@@ -57,11 +57,10 @@ public partial class SgpiContext : DbContext
 
         modelBuilder.Entity<Homologacion>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Homologacion");
+            entity.HasKey(e => e.Id_Homologacion);
+            entity.ToTable("Homologacion");
 
-            entity.HasIndex(e => e.IdHomologacion, "Id_Homologacion").IsUnique();
+            entity.HasIndex(e => e.Id_Homologacion, "Id_Homologacion").IsUnique();
 
             entity.Property(e => e.AsignaturaAnterior)
                 .HasMaxLength(100)
@@ -73,24 +72,32 @@ public partial class SgpiContext : DbContext
                 .HasColumnName("Asigntaura_Nueva");
             entity.Property(e => e.CreditoAnterioro).HasColumnName("Credito_Anterioro");
             entity.Property(e => e.CreditoNuevo).HasColumnName("Credito_Nuevo");
-            entity.Property(e => e.IdHomologacion).HasColumnName("Id_Homologacion");
-            entity.Property(e => e.IdPrograma).HasColumnName("Id_Programa");
-            entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
+            entity.Property(e => e.Id_Homologacion).HasColumnName("Id_Homologacion");
+            entity.Property(e => e.Id_Programa).HasColumnName("Id_Programa");
+            entity.Property(e => e.Id_Usuario).HasColumnName("Id_Usuario");
+
+            modelBuilder.Entity<Homologacion>()
+            .HasOne(h => h.IdUsuarioNavigation)
+            .WithMany(u => u.Homologacions)
+            .OnDelete(DeleteBehavior.Cascade);
+
         });
 
-        modelBuilder.Entity<Pago>(entity =>
+        modelBuilder.Entity<Pagos>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.Id_Pagos);
 
-            entity.HasIndex(e => e.IdPago, "Id_Pagos").IsUnique();
+            entity.ToTable("Pagos");
 
-            entity.Property(e => e.FechaPago)
+            entity.HasIndex(e => e.Id_Pagos, "Id_Pagos").IsUnique();
+
+            entity.Property(e => e.Fecha_Pago)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("Fecha_Pago");
-            entity.Property(e => e.IdPago).HasColumnName("Id_Pago");
-            entity.Property(e => e.IdUsuario).HasColumnName("Id_Usuario");
-            entity.Property(e => e.Recibo)
+            entity.Property(e => e.Id_Pagos).HasColumnName("Id_Pagos");
+            entity.Property(e => e.Valor);
+            entity.Property(e => e.ArchivoRecibo)
                 .HasMaxLength(200)
                 .IsUnicode(false);
         });
@@ -139,17 +146,16 @@ public partial class SgpiContext : DbContext
 
         modelBuilder.Entity<TipoHomologacion>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("TipoHomologacion");
+            entity.HasKey(e => e.Id_TipoHomologacion);
+            entity.ToTable("TipoHomologacion");
 
-            entity.HasIndex(e => e.IdTipoHomologacion, "Id_TipoHomologacion").IsUnique();
+            entity.HasIndex(e => e.Id_TipoHomologacion, "Id_TipoHomologacion").IsUnique();
 
             entity.Property(e => e.Descripcion)
                 .HasMaxLength(200)
                 .IsUnicode(false);
-            entity.Property(e => e.IdHomologacion).HasColumnName("Id_Homologacion");
-            entity.Property(e => e.IdTipoHomologacion).HasColumnName("Id_TipoHomologacion");
+            entity.Property(e => e.Id_Homologacion).HasColumnName("Id_Homologacion");
+            entity.Property(e => e.Id_TipoHomologacion).HasColumnName("Id_TipoHomologacion");
         });
 
         modelBuilder.Entity<Usuario>(entity =>
@@ -194,6 +200,16 @@ public partial class SgpiContext : DbContext
                 .HasForeignKey(d => d.Id_Rol)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FKUsuarioRol");
+
+            entity.HasOne(d => d.IdProgramaNavigation).WithMany(p => p.Usuarios)
+                .HasForeignKey(d => d.Id_Programa)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FKUsuarioPrograma");
+
+            entity.HasOne(d => d.IdPagosNavigation).WithMany(p => p.Usuarios)
+                  .HasForeignKey(d => d.Id_Pagos)
+                  .OnDelete(DeleteBehavior.ClientSetNull)
+                  .HasConstraintName("FKUsuarioPagos");
 
         });
 
